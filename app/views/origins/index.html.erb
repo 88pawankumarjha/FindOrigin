@@ -1,0 +1,142 @@
+<h1 align="left">FIND ORIGIN</h1>
+<br>
+<script>
+	$(document).ready(function() {
+		$("#inputQuote").focus();
+		$("#inputAuthorButton").click(function(event) {
+			inputAuthor = $('#inputAuthor').val();
+			$("#ajaxDiv").load("origins/" + inputAuthor, function(responseText, textStatus, XMLHttpRequest) {
+				// XMLHttpRequest.responseText has the error info you want.
+				if (textStatus == "error") {
+					alert(textStatus + " invalid search entry");
+				}
+			});
+			$('#ajaxDiv').show(1000);
+		});
+		$('#inputAuthor').keydown(function(e) {
+			if (e.keyCode == 13) {
+				inputAuthor = $('#inputAuthor').val();
+				$("#ajaxDiv").load("origins/" + inputAuthor, function(responseText, textStatus, XMLHttpRequest) {
+					// XMLHttpRequest.responseText has the error info you want.
+					if (textStatus == "error") {
+						alert(textStatus + " invalid search entry");
+					}
+				});
+				$('#ajaxDiv').show(1000);
+			}
+		});
+		$("#inputQuoteButton").click(function(event) {
+			inputQuote = $('#inputQuote').val();
+			// $('#ajaxDiv').load("origins/"+inputQuote);
+			$("#ajaxDiv").load("origins/" + inputQuote, function(responseText, textStatus, XMLHttpRequest) {
+				// XMLHttpRequest.responseText has the error info you want.
+				if (textStatus == "error") {
+					alert(textStatus + " invalid search entry");
+				}
+			});
+			$('#ajaxDiv').show(1000);
+		});
+		$('#inputQuote').keydown(function(e) {
+			if (e.keyCode == 13) {
+				inputQuote = $('#inputQuote').val();
+				$("#ajaxDiv").load("origins/" + inputQuote, function(responseText, textStatus, XMLHttpRequest) {
+					// XMLHttpRequest.responseText has the error info you want.
+					if (textStatus == "error") {
+						alert(textStatus + " invalid search entry");
+					}
+				});
+				$('#ajaxDiv').show(1000);
+			}
+		});
+		$("#findQuoteTab").click(function(event) {
+			$('#ajaxDiv').hide();
+		});
+		$("#findAuthorTab").click(function(event) {
+			$('#ajaxDiv').hide();
+		});
+
+	});
+
+	function handleQuote() {
+		// alert("Author of \"" + document.formQuote.inputQuote.value + "\" is Unknown");
+	}
+
+	function handleAuthor() {
+		// alert("Quotes by \"" + document.formAuthor.inputAuthor.value + "\" are Unknown");
+	}
+
+</script>
+
+<div class="tabbable tabs-left" >
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a id="findAuthorTab" href="#lA" data-toggle="tab">Find Author</a>
+		</li>
+		<li>
+			<a id="findQuoteTab" href="#lB" data-toggle="tab">Find Quotes</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="lA">
+			<form name="formQuote" class="form-search" action="javascript:handleQuote()">
+				<div class="input-append">
+					<br>
+					<input id="inputQuote" type="text" class="span3 search-query" placeholder="Write the Quote here..">
+					<button id="inputQuoteButton" type="submit" class="btn btn-primary">
+						Search
+					</button>
+				</div>
+			</form>
+
+		</div>
+		<div class="tab-pane" id="lB">
+			<form name="formAuthor" class="form-search" action="javascript:handleAuthor()">
+				<div class="input-append">
+					<br>
+
+					<input id="inputAuthor" type="text" class="span3 search-query" placeholder="Write the Author Name here..">
+
+					<button id="inputAuthorButton" type="submit" class="btn btn-primary">
+						Search
+					</button>
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+</div>
+<!-- /tabbable -->
+<hr />
+<div id="ajaxDiv"></div>
+
+<!-- <h1>Listing origins</h1>
+
+<table>
+<tr>
+<th>Pname</th>
+<th>Cname</th>
+<th>Pdetail</th>
+<th>Cdetail</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+
+<% @origins.each do |origin| %>
+<tr>
+<td><%= origin.pname %></td>
+<td><%= origin.cname %></td>
+<td><%= origin.pdetail %></td>
+<td><%= origin.cdetail %></td>
+<td><%= link_to 'Show', origin %></td>
+<td><%= link_to 'Edit', edit_origin_path(origin) %></td>
+<td><%= link_to 'Destroy', origin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Origin', new_origin_path %> -->

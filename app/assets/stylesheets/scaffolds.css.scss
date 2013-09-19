@@ -1,11 +1,33 @@
 body {
-  background-color: #fff;
+  background-color: #a7b1ba;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  display: block;
+      background: url(/assets/body-top.gif) repeat-x 0 0 , url(/assets/body.gif) repeat 0 0 ;
 }
-
+.body {
+  // background-color: #DCDCDC;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+    margin-left: 10%;
+    margin-right: 10%;
+      display: block;
+      padding-top: 6px;
+      background: url(/assets/content.png) repeat 0 0;
+}
+.head{
+  background: url(/assets/FindOrigin4.png) no-repeat;
+  background-size: contain;
+  -ms-behavior: url(/assets/backgroundsize.min.htc);
+  margin: -7px;
+  -webkit-border-radius: 65px;-moz-border-radius: 65px;border-radius: 65px;
+  // -webkit-box-shadow: #B3B3B3 65px 65px 65px;-moz-box-shadow: #B3B3B3 65px 65px 65px; box-shadow: #B3B3B3 65px 65px 65px;
+  
+}
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;

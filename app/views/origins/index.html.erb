@@ -1,51 +1,63 @@
-<h1 align="left">FIND ORIGIN</h1>
+<div class="head"><h1><br /><br /><br /></h1><br /><br /></div>
 <br>
+
+
 <script>
 	$(document).ready(function() {
 		$("#inputQuote").focus();
 		$("#inputAuthorButton").click(function(event) {
 			inputAuthor = $('#inputAuthor').val();
-			$("#ajaxDiv").load("origins/" + inputAuthor, function(responseText, textStatus, XMLHttpRequest) {
+			$("#ajaxDiv").load("origins/"+inputAuthor, function(responseText, textStatus, XMLHttpRequest) {
 				// XMLHttpRequest.responseText has the error info you want.
-				if (textStatus == "error") {
-					alert(textStatus + " invalid search entry");
-				}
-			});
-			$('#ajaxDiv').show(1000);
+				if (textStatus == "error" || inputAuthor == "") {
+						$('#ajaxDiv').hide();
+						alert("Invalid Search Entry");
+					}else{
+						$('#ajaxDiv').show(1000);
+					}
+				});
 		});
 		$('#inputAuthor').keydown(function(e) {
 			if (e.keyCode == 13) {
 				inputAuthor = $('#inputAuthor').val();
-				$("#ajaxDiv").load("origins/" + inputAuthor, function(responseText, textStatus, XMLHttpRequest) {
+				$("#ajaxDiv").load("origins/"+inputAuthor, function(responseText, textStatus, XMLHttpRequest) {
 					// XMLHttpRequest.responseText has the error info you want.
-					if (textStatus == "error") {
-						alert(textStatus + " invalid search entry");
+					if (textStatus == "error" || inputAuthor == "") {
+						$('#ajaxDiv').hide();
+						alert("Invalid Search Entry");
+					}else{
+						$('#ajaxDiv').show(1000);
 					}
 				});
-				$('#ajaxDiv').show(1000);
+				
 			}
 		});
 		$("#inputQuoteButton").click(function(event) {
 			inputQuote = $('#inputQuote').val();
 			// $('#ajaxDiv').load("origins/"+inputQuote);
-			$("#ajaxDiv").load("origins/" + inputQuote, function(responseText, textStatus, XMLHttpRequest) {
+			$("#ajaxDiv").load("origins/"+inputQuote, function(responseText, textStatus, XMLHttpRequest) {
 				// XMLHttpRequest.responseText has the error info you want.
-				if (textStatus == "error") {
-					alert(textStatus + " invalid search entry");
+				if (textStatus == "error" || inputQuote == "") {
+					$('#ajaxDiv').hide();
+					alert("Invalid Search Entry");
+				}else{
+					$('#ajaxDiv').show(1000);
 				}
 			});
-			$('#ajaxDiv').show(1000);
+			
 		});
 		$('#inputQuote').keydown(function(e) {
 			if (e.keyCode == 13) {
 				inputQuote = $('#inputQuote').val();
-				$("#ajaxDiv").load("origins/" + inputQuote, function(responseText, textStatus, XMLHttpRequest) {
-					// XMLHttpRequest.responseText has the error info you want.
-					if (textStatus == "error") {
-						alert(textStatus + " invalid search entry");
-					}
-				});
-				$('#ajaxDiv').show(1000);
+			$("#ajaxDiv").load("origins/"+inputQuote, function(responseText, textStatus, XMLHttpRequest) {
+				// XMLHttpRequest.responseText has the error info you want.
+				if (textStatus == "error" || inputQuote == "") {
+					$('#ajaxDiv').hide();
+					alert("Invalid Search Entry");
+				}else{
+					$('#ajaxDiv').show(1000);
+				}
+			});
 			}
 		});
 		$("#findQuoteTab").click(function(event) {
@@ -57,18 +69,17 @@
 
 	});
 
-	function handleQuote() {
-		// alert("Author of \"" + document.formQuote.inputQuote.value + "\" is Unknown");
-	}
-
-	function handleAuthor() {
-		// alert("Quotes by \"" + document.formAuthor.inputAuthor.value + "\" are Unknown");
-	}
-
+function handleQuote(){
+	
+}
+function handleAuthor(){
+	
+}
 </script>
 
 <div class="tabbable tabs-left" >
 	<ul class="nav nav-tabs">
+		<br />
 		<li class="active">
 			<a id="findAuthorTab" href="#lA" data-toggle="tab">Find Author</a>
 		</li>
@@ -81,7 +92,7 @@
 			<form name="formQuote" class="form-search" action="javascript:handleQuote()">
 				<div class="input-append">
 					<br>
-					<input id="inputQuote" type="text" class="span3 search-query" placeholder="Write the Quote here..">
+					<input id="inputQuote" type="text" class="span3 search-query" required title="This field should not be left blank." placeholder="Write the Quote here..">
 					<button id="inputQuoteButton" type="submit" class="btn btn-primary">
 						Search
 					</button>
@@ -94,7 +105,7 @@
 				<div class="input-append">
 					<br>
 
-					<input id="inputAuthor" type="text" class="span3 search-query" placeholder="Write the Author Name here..">
+					<input id="inputAuthor" type="text" class="span3 search-query" required title="This field should not be left blank." placeholder="Write the Author Name here..">
 
 					<button id="inputAuthorButton" type="submit" class="btn btn-primary">
 						Search

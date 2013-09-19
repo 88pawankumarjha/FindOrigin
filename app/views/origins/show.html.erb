@@ -1,25 +1,69 @@
-<p id="notice"><%= notice %></p>
+<body>  
+<div class='wrapper'>
+  <div class='content'> 
+  	
+  	<div class="input-prepend">
+  		<button id="cleanfilters" type="reset" class="btn btn-inverse">
+						Clear Filters
+					</button>
+	  <input class="span2" id="quickfind" type="text" placeholder="Quick Find..">
+    				
+				</div>
+  	
+    <!-- Quick Find: <input type='text' id='quickfind'/>
+    <b><a id='cleanfilters' href='#'>Clear Filters</a></b> 
+    <button id="cleanfilters" type="reset" class="btn btn-primary">
+						Clear Filters
+					</button> -->
+    <div class='clear'></div>
+    <br/>
+    <div class='column1'>
+    <div class='table-responsive'>
+      <table id='demotable1' class="table table-striped table-bordered table-condensed table-hover">
+        <thead>
+          <tr><th>Pname</th><th>Pdetail</th><th>Cname</th><th>Cdetail</th></tr>
+        </thead>
+        <tbody>
+        	<tr><td><%= @origin.pname %></td><td><%= @origin.pdetail %></td><td><%= @origin.cname %></td><td><%= @origin.cdetail %></td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <div class='clear'></div>
+    <hr/>
+    
+  </div>
+</div>
+  </body>
+</html>
 
-<p>
-  <b>Pname:</b>
-  <%= @origin.pname %>
-</p>
 
-<p>
-  <b>Cname:</b>
-  <%= @origin.cname %>
-</p>
-
-<p>
-  <b>Pdetail:</b>
-  <%= @origin.pdetail %>
-</p>
-
-<p>
-  <b>Cdetail:</b>
-  <%= @origin.cdetail %>
-</p>
 
 
 <!-- <%= link_to 'Edit', edit_origin_path(@origin) %> | -->
-<%= link_to 'Back', origins_path %>
+<B><%= link_to 'Back', origins_path %></B>
+ <script type='text/javascript'>
+        $(document).ready(function() {
+            
+          // Initialise Plugin
+            var options1 = {
+                additionalFilterTriggers: [$('#quickfind')],
+                clearFiltersControls: [$('#cleanfilters')],
+                matchingRow: function(state, tr, textTokens) {
+                  if (!state || !state.id) {
+                    return true;
+                }
+                  var child = tr.children('td:eq(2)');
+                  if (!child) return true;
+                  var val = child.text();
+                  switch (state.id) {
+                  default:
+                    return true;
+                }
+              }
+          };
+
+            $('#demotable1').tableFilter(options1); 
+     
+      });
+    </script>

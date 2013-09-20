@@ -13,25 +13,11 @@
 
 ActiveRecord::Schema.define(:version => 20130917170854) do
 
-  create_table "children", :force => true do |t|
-    t.string   "name"
-    t.string   "details"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "origins", :force => true do |t|
     t.string   "pname"
     t.string   "cname"
     t.string   "pdetail"
     t.string   "cdetail"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "parents", :force => true do |t|
-    t.string   "name"
-    t.string   "details"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
